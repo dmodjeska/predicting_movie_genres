@@ -1,0 +1,228 @@
+---
+title: Project Milestone 2 - TMDB download
+subtitle: "Team 14, Harvard CS109B, Spring 2017"
+date: "April 2017"
+output: pdf_document
+urlcolor: blue
+linkcolor: blue
+---
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(cache = TRUE, echo = TRUE, warning = FALSE, error = FALSE, message = FALSE, output = "asis")
+
+library(httr)
+library(jsonlite)
+library(data.table)
+library(imager)
+library(dplyr)
+library(dtplyr)
+library(lubridate)
+library(stringr)
+library(readr)
+library(ggplot2)
+library(gplots)
+library(RColorBrewer)
+
+```
+
+```{r paths}
+
+# set up paths
+# project_dir <- "/Users/davidmodjeska/_Project/"
+# data_filename <- "tmdb_data.csv"
+# genres_filename <- "tmdb_genre_list.csv"
+# top_movies_filename <- "top_10_movies_2016.csv"
+
+```
+
+```{r code_1}
+
+#-------- General Setup ---------
+# 
+# options(stringsAsFactors = FALSE)
+# 
+# url <- "https://api.themoviedb.org"
+# api_key <- "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # for user David Modjeska
+# 
+# function to make a GET request and convert the raw content to JSON
+# start_time <- Sys.time()
+# make_get_request <- function(url, path) {
+#     raw_result <- GET(url = url, path = path)
+#     recs_remaining <- raw_result$headers[["x-ratelimit-remaining"]]
+#     if (recs_remaining == '39') {
+#         start_time <<- Sys.time()
+#     } else if (recs_remaining == '0') {
+#         seconds <- as.double(difftime(Sys.time(), start_time, u = 'secs'))
+#         if (seconds < 10) {
+#             Sys.sleep((10 - seconds) + 1)
+#         }
+#     }
+# 
+#     if (raw_result$status_code != 200)
+#         stop(paste0("Creating request token failed with error code ",
+#                     raw_result$status_code))
+# 
+#     this_raw_content <- rawToChar(raw_result$content)
+#     this_content <- fromJSON(this_raw_content)
+# 
+#     return(this_content)
+# }
+# 
+# 
+# #----------- API Session -------------
+# 
+# # create request token
+# path <- paste0("3/authentication/token/new?api_key=", api_key)
+# this_content <- make_get_request(url, path)
+# request_token <- this_content$request_token
+# 
+# # validate request token interactively
+# validate_url <- paste0("https://www.themoviedb.org/authenticate/",
+#                        request_token)
+# browseURL(validate_url)
+# 
+# # create session
+# path <- paste0("3/authentication/session/new?api_key=", api_key,
+#                "&request_token=", request_token)
+# this_content <- make_get_request(url, path)
+# session_id <- this_content$session_id
+# 
+# # get genre list
+# path <- paste0("3/genre/movie/list?api_key=", api_key, "&language=en-US")
+# this_content <- make_get_request(url, path)
+# genres <- this_content$genres
+# 
+# genres_filename <- "tmdb_genre_list.csv"
+# out_file <- str_c(project_dir, genres_filename)
+# write_csv(genres, out_file)
+# 
+# # get configuration
+# path <- paste0("3/configuration?api_key=", api_key)
+# this_content <- make_get_request(url, path)
+# base_url <- this_content$images$base_url
+# poster_size <- 'w500'
+# 
+# #---------- A Favorite Movie: The Godfather ------------
+# 
+# # find by external ID - "The Godfather"
+# path <- paste0("3/find/tt0068646?api_key=", api_key,
+#                "&language=en-US&external_source=imdb_id")
+# this_content <- make_get_request(url, path)
+# original_title <- this_content$movie_results$original_title
+# genre_ids <- this_content$movie_results$genre_ids
+# poster_path <- this_content$movie_results$poster_path
+# 
+# # list this movie's genres on tmdb
+# # note: this movie's genres on IMDB are: Crime, Drama
+# this_movie_genres <- genres %>%
+#     filter(id %in% genre_ids[[1]]) %>%
+#     select(name)
+# print(original_title)
+# print(this_movie_genres)
+# 
+# # plot poster
+# poster_url <-paste0(base_url, poster_size, poster_path)
+# poster_filename <- "poster.jpg"
+# download.file(poster_url, poster_filename)
+# poster <- load.image(poster_filename)
+# plot(poster)
+# 
+# #---------- Top movies in 2016 ------------
+# 
+# # get data
+# num_movies <- 10
+# path <- paste0("3/discover/movie?api_key=", api_key,
+#                "&language=en-US",
+#                "&sort_by=popularity.desc",
+#                "&include_adult=false",
+#                "&include_video=false",
+#                "&page=1",
+#                "&year=2016")
+# this_content <- make_get_request(url, path)
+# original_title_10 <- this_content$results$original_title[1:num_movies]
+# genre_ids_10 <- this_content$results$genre_ids[1:num_movies]
+# 
+# # print data
+# print_data <- data.frame(MOVIE <- character(), GENRE <- character())
+# for (i in 1:num_movies) {
+#     this_title <- original_title_10[i]
+#     these_ids <- genre_ids_10[i]
+#     these_genres <- genres %>%
+#         filter(id %in% these_ids[[1]]) %>%
+#         select(name) %>%
+#         summarize(GENRE = paste(name, collapse = ", "))
+#     this_data <- data.frame(MOVIE = this_title, GENRE = these_genres)
+#     print_data <- rbind(print_data, this_data)
+# }
+#
+# out_file <- str_c(project_dir, "top_10_movies_2016.csv")
+# write_csv(print_data, out_file)
+# 
+# #------- DOWNLOAD -----------------
+# 
+# # set directories
+# project_dir <- "/Users/davidmodjeska/CS109b/Project/"
+# ml_data_dir <- "MovieLens/ml-latest/"
+# tmdb_data_dir <- "TMDb/"
+# 
+# # read ML data to get IMDb IDs
+# in_file <- str_c(project_dir, "ml_data.csv")
+# ml_data <- read_csv(in_file, col_names = TRUE, col_types = 'iccincii') %>%
+#     mutate(num_genres = as.integer(num_genres))
+# 
+# # extract movie results from one downloaded data chunk
+# make_movie_rec <- function(this_content) {
+#     this_movie_record <- this_content$movie_results
+#     this_movie_record$genre_ids = sub("^c[(](.*)[)]$", "\\1",
+#                                       this_movie_record$genre_ids)
+# 
+#     return(this_movie_record)
+# }
+# 
+# # download a sample record
+# imdb_id <- ml_data$imdbId[1]
+# path <- paste0("3/find/tt0", imdb_id, "?api_key=", api_key,
+#                "&language=en-US&external_source=imdb_id")
+# this_content <- make_get_request(url, path)
+# first_movie_record <- make_movie_rec(this_content)
+# 
+# # get multiple records (note that make_get_request() will sleep as needed)
+# all_movie_records <- first_movie_record
+# for (i in 2:nrow(ml_data)) {
+#     imdb_id <- str_pad(ml_data$imdbId[i], 7, pad = '0')
+#     path <- paste0("3/find/tt", imdb_id, "?api_key=", api_key,
+#                    "&language=en-US&external_source=imdb_id")
+#     this_content <- make_get_request(url, path)
+#     if (is.data.frame(this_content$movie_results)) {
+#         this_movie_record <- make_movie_rec(this_content)
+#         all_movie_records <- rbind(all_movie_records, this_movie_record)
+#     }
+# }
+# 
+# # count number of genres per movie
+# all_movie_records <- mutate(all_movie_records,
+#                             num_genres = str_count(genre_ids, '[,]') + 1) %>%
+#    select(-backdrop_path, -poster_path)
+#
+# 
+# # save file
+# out_file <- str_c(project_dir, data_filename)
+# write_csv(all_movie_records, out_file)
+# 
+# #----------- DOWNLOAD POSTERS
+# 
+# for (i in 1:nrow(ml_data)) {
+#     imdb_id <- str_pad(ml_data$imdbId[i], 7, pad = '0')
+#     path <- paste0("3/find/tt", imdb_id, "?api_key=", api_key,
+#                    "&language=en-US&external_source=imdb_id")
+#     this_content <- make_get_request(url, path)
+#     if (is.data.frame(this_content$movie_results)) {
+#         poster_path <- this_content$movie_results$poster_path
+#         poster_url <-paste0(base_url, poster_size, poster_path)
+#         poster_filename <- str_c(poster_dir, imdb_id, ".jpg")
+#         download.file(poster_url, poster_filename)
+#     }
+# }
+
+```
