@@ -14,4 +14,5 @@ deep learning techniques. Our deep learning was supported by Amazon Web Services
 
 * [Final Report](https://github.com/dmodjeska/cs109b/blob/master/Predicting_Movie_Genres_Report.pdf)
 * [Code from Project Milestones (M1-M4)](https://github.com/dmodjeska/cs109b/tree/master/Code)
+* [Summary Video](https://github.com/dmodjeska/cs109b/blob/master/Team_14_Project_Video.mp4)
 * [Change Log](https://github.com/dmodjeska/cs109b/blob/master/Change_Log.pdf)
