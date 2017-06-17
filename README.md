@@ -13,6 +13,15 @@ deep learning techniques. Our deep learning was supported by Amazon Web Services
 ## Files
 
 * [Final Report](https://github.com/dmodjeska/cs109b/blob/master/Predicting_Movie_Genres_Report.pdf)
-* [Code from Project Milestones (M1-M4)](https://github.com/dmodjeska/cs109b/tree/master/Code)
+* [Code from Project Milestones (M1 - M4)](https://github.com/dmodjeska/cs109b/tree/master/Code)
+* * [M1: Exploratory Data Analysis of IMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_IMDb_EDA.ipynb)
+* * [M1: Exploratory Data Analysis of TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_TMDb_EDA_6Apr2017.Rmd)
+* * [M2: Data Acquisition and EDA for TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2_explore_tmdb.Rmd)
+* * [M2: Data Acquisition for IMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2_imdbpy_data_extract.ipynb)
+* * [M2: Data Preprocessing for IMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2%20merge%20data%20sets.ipynb)
+* * [M3: Language Modeling with TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M3_Language_Model_29Apr2017B.ipynb)
+* * [M3: People Modeling with IMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M3_imdb_people_model_29B.ipynb)
+* * [M4: Convolutional Neural Network (from Scratch)](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_DL_Scratch_25Apr2017_alt.ipynb)
+* * [M4: Convolutional Neural Network (Pre-trained](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_VGG_Retrain_28B.ipynb)
 * [Summary Video](https://github.com/dmodjeska/cs109b/blob/master/Team_14_Project_Video.mp4)
 * [Change Log](https://github.com/dmodjeska/cs109b/blob/master/Change_Log.pdf)
