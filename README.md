@@ -10,18 +10,20 @@ processing hardware. At the same time, these areas are largely new to the averag
 student. In this project, we explore the genre question above using classic machine learning and modern
 deep learning techniques. Our deep learning was supported by Amazon Web Services (AWS).
 
-## Files
+## Report and Video
 
 * [Final Report](https://github.com/dmodjeska/cs109b/blob/master/Predicting_Movie_Genres_Report.pdf)
-* [Code from Project Milestones (M1 - M4)](https://github.com/dmodjeska/cs109b/tree/master/Code)
-* * [M1: Data Extraction and Manipulation of IMDb Text Files](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_IMDb_EDA.ipynb)
-* * [M1: Exploratory Data Analysis for TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_TMDb_EDA_6Apr2017.Rmd)
-* * [M2: Data Acquisition for TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2_explore_tmdb.Rmd)
-* * [M2: Data Extraction and Manipulation of IMDb Text Files](https://github.com/dmodjeska/cs109b/blob/master/Code/M2_imdbpy_data_extract.ipynb)
-* * [M2: Data Preprocessing for IMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2%20merge%20data%20sets.ipynb)
-* * [M3: Text Mining and Predictive Modeling of TMDb Movie Summaries](https://github.com/dmodjeska/cs109b/blob/master/Code/M3_Language_Model_29Apr2017B.ipynb)
-* * [M3: Predictive Modeling with IMDb Cast and Crew](https://github.com/dmodjeska/cs109b/blob/master/Code/M3_imdb_people_model_29B.ipynb)
-* * [M4: Convolutional Neural Network (from Scratch) for Movie Posters](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_DL_Scratch_25Apr2017_alt.ipynb)
-* * [M4: Convolutional Neural Network (Pre-trained) for Movie Posters](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_VGG_Retrain_28B.ipynb)
 * [Summary Video](https://github.com/dmodjeska/cs109b/blob/master/Team_14_Project_Video.mp4)
-* [Change Log](https://github.com/dmodjeska/cs109b/blob/master/Change_Log.pdf)
+
+## Source Code
+
+* [M1: Data Extraction and Manipulation of IMDb Text Files](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_IMDb_EDA.ipynb)
+* [M1: Exploratory Data Analysis for TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_TMDb_EDA_6Apr2017.Rmd)
+* [M2: Data Acquisition for TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2_explore_tmdb.Rmd)
+* [M2: Data Extraction and Manipulation of IMDb Text Files](https://github.com/dmodjeska/cs109b/blob/master/Code/M2_imdbpy_data_extract.ipynb)
+* [M2: Data Preprocessing for IMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M2%20merge%20data%20sets.ipynb)
+* [M3: Text Mining and Predictive Modeling of TMDb Movie Summaries](https://github.com/dmodjeska/cs109b/blob/master/Code/M3_Language_Model_29Apr2017B.ipynb)
+* [M3: Predictive Modeling with IMDb Cast and Crew](https://github.com/dmodjeska/cs109b/blob/master/Code/M3_imdb_people_model_29B.ipynb)
+* [M4: Convolutional Neural Network (from Scratch) for Movie Posters](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_DL_Scratch_25Apr2017_alt.ipynb)
+* [M4: Convolutional Neural Network (Pre-trained) for Movie Posters](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_VGG_Retrain_28B.ipynb)
+
