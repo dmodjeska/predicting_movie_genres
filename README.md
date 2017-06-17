@@ -15,7 +15,7 @@ deep learning techniques. Our deep learning was supported by Amazon Web Services
 * [Final Report](https://github.com/dmodjeska/cs109b/blob/master/Predicting_Movie_Genres_Report.pdf)
 * [Summary Video](https://github.com/dmodjeska/cs109b/blob/master/Team_14_Project_Video.mp4)
 
-## Source Code
+## Code
 
 * [M1: Data Extraction and Manipulation of IMDb Text Files](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_IMDb_EDA.ipynb)
 * [M1: Exploratory Data Analysis for TMDb](https://github.com/dmodjeska/cs109b/blob/master/Code/M1_TMDb_EDA_6Apr2017.Rmd)
@@ -27,3 +27,8 @@ deep learning techniques. Our deep learning was supported by Amazon Web Services
 * [M4: Convolutional Neural Network (from Scratch) for Movie Posters](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_DL_Scratch_25Apr2017_alt.ipynb)
 * [M4: Convolutional Neural Network (Pre-trained) for Movie Posters](https://github.com/dmodjeska/cs109b/blob/master/Code/M4_VGG_Retrain_28B.ipynb)
 
+## Data
+
+* The Movie Lens: https://grouplens.org/datasets/movielens/
+* IMDb: http://imdbpy.sourceforge.net/
+* The Movie Database: https://developers.themoviedb.org/3/getting-started
